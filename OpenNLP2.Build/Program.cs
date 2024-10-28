@@ -36,21 +36,22 @@ var libOutPath = Path.Combine("apache-opennlp", "libsJvm8");
 if (Directory.Exists(libOutPath))
     Directory.Delete(libOutPath, true);
 
+//Covert to Java 8
 ExecuteCommand($"java -jar jvmdowngrader.jar -c 52 downgrade -t {inputPath} {libOutPath}");
 
 var apiPath = Path.Combine(libOutPath, "jvmdowngrader-api.jar");
 if (File.Exists(apiPath))
     File.Delete(apiPath);
 
+//Extract the JVM Downgrader API
 ExecuteCommand($"java -jar jvmdowngrader.jar -c 52 debug downgradeApi {apiPath}");
 
-var snDir = Path.GetFullPath("../../../../");
-
+//Run jdeps => dependency graph
 string[] files = Directory.GetFiles(libOutPath, "*.jar");
-
 var cmd = $"jdeps --multi-release 9 -filter:package -dotoutput dot {string.Join(" ", files)}";
 ExecuteCommand(cmd);
 
+//Parse the dependency graph
 var depsGrapthStr = File.ReadAllText("./dot/summary.dot");
 var parser = new Parser(depsGrapthStr);
 
@@ -96,13 +97,23 @@ IKVMTask GetTask(string jarFile)
     return task;
 } 
 
+//Get the tasks
 var tasks = jars.Select(GetTask).ToList();
-
-
-var t = 1;
 
 var libDir = "..\\apache-opennlp\\libs\\";
 
+//Copy libs to Solution Folder 
+string libDirSolution = Path.Combine("..\\..\\.." , libDir);
+if (!Directory.Exists(libDirSolution))
+    Directory.CreateDirectory(libDirSolution);
+
+foreach (var file in Directory.GetFiles(libOutPath))
+{
+    File.Copy(file, Path.Combine(libDirSolution, Path.GetFileName(file)));
+}
+
+
+//Output the targets
 foreach (var ikvmTask in tasks)
 {
     Console.WriteLine(ikvmTask.GetTarget(libDir));
@@ -116,7 +127,6 @@ void Compile(IKVMTask task)
     var code = ExecuteCommand(cmd);
     Console.WriteLine($"Done {task.DllFile} ({code})");
 }
-
 
 string GetIKVMCommandLineArgs(IKVMTask task, string jarLibDir)
 {

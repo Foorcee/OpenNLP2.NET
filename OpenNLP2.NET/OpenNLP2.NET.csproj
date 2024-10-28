@@ -11,6 +11,222 @@
       <PackageReference Include="IKVM" Version="8.10.2" />
     </ItemGroup>
 
-   
+<!--   <ItemGroup>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\grizzly-framework-4.0.2.jar">-->
+<!--           <Aliases>grizzly-framework-4.0.2</Aliases>-->
+<!--           <AssemblyVersion>4.0.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>4.0.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\grizzly-http-4.0.2.jar">-->
+<!--           <Aliases>grizzly-http-4.0.2</Aliases>-->
+<!--           <AssemblyVersion>4.0.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>4.0.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\grizzly-http-server-4.0.2.jar">-->
+<!--           <Aliases>grizzly-http-server-4.0.2</Aliases>-->
+<!--           <AssemblyVersion>4.0.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>4.0.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\hppc-0.7.2.jar">-->
+<!--           <Aliases>hppc-0.7.2</Aliases>-->
+<!--           <AssemblyVersion>0.7.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>0.7.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jackson-annotations-2.17.2.jar">-->
+<!--           <Aliases>jackson-annotations-2.17.2</Aliases>-->
+<!--           <AssemblyVersion>2.17.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.17.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jackson-core-2.17.2.jar">-->
+<!--           <Aliases>jackson-core-2.17.2</Aliases>-->
+<!--           <AssemblyVersion>2.17.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.17.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jackson-databind-2.17.2.jar">-->
+<!--           <Aliases>jackson-databind-2.17.2</Aliases>-->
+<!--           <AssemblyVersion>2.17.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.17.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jackson-module-jakarta-xmlbind-annotations-2.17.0.jar">-->
+<!--           <Aliases>jackson-module-jakarta-xmlbind-annotations-2.17.0</Aliases>-->
+<!--           <AssemblyVersion>2.17.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.17.0</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jackson-module-jaxb-annotations-2.17.2.jar">-->
+<!--           <Aliases>jackson-module-jaxb-annotations-2.17.2</Aliases>-->
+<!--           <AssemblyVersion>2.17.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.17.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jakarta.activation-api-1.2.2.jar">-->
+<!--           <Aliases>jakarta.activation-api-1.2.2</Aliases>-->
+<!--           <AssemblyVersion>1.2.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>1.2.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jakarta.annotation-api-2.1.1.jar">-->
+<!--           <Aliases>jakarta.annotation-api-2.1.1</Aliases>-->
+<!--           <AssemblyVersion>2.1.1</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.1.1</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jakarta.inject-api-2.0.1.jar">-->
+<!--           <Aliases>jakarta.inject-api-2.0.1</Aliases>-->
+<!--           <AssemblyVersion>2.0.1</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.0.1</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jakarta.validation-api-3.0.2.jar">-->
+<!--           <Aliases>jakarta.validation-api-3.0.2</Aliases>-->
+<!--           <AssemblyVersion>3.0.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.0.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jakarta.ws.rs-api-3.1.0.jar">-->
+<!--           <Aliases>jakarta.ws.rs-api-3.1.0</Aliases>-->
+<!--           <AssemblyVersion>3.1.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.0</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jakarta.xml.bind-api-4.0.2.jar">-->
+<!--           <Aliases>jakarta.xml.bind-api-4.0.2</Aliases>-->
+<!--           <AssemblyVersion>4.0.2</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>4.0.2</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jcommander-1.78.jar">-->
+<!--           <Aliases>jcommander-1.78</Aliases>-->
+<!--           <AssemblyVersion>1.78</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>1.78</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jersey-client-3.1.7.jar">-->
+<!--           <Aliases>jersey-client-3.1.7</Aliases>-->
+<!--           <AssemblyVersion>3.1.7</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.7</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jersey-common-3.1.7.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jersey-common-3.1.7.jar">-->
+<!--           <Aliases>jersey-common-3.1.7</Aliases>-->
+<!--           <AssemblyVersion>3.1.7</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.7</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\osgi-resource-locator-1.0.3.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jersey-container-grizzly2-http-3.1.7.jar">-->
+<!--           <Aliases>jersey-container-grizzly2-http-3.1.7</Aliases>-->
+<!--           <AssemblyVersion>3.1.7</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.7</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jersey-common-3.1.7.jar;..\apache-opennlp\libs\jersey-server-3.1.7.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jersey-entity-filtering-3.1.7.jar">-->
+<!--           <Aliases>jersey-entity-filtering-3.1.7</Aliases>-->
+<!--           <AssemblyVersion>3.1.7</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.7</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jersey-common-3.1.7.jar;..\apache-opennlp\libs\jersey-server-3.1.7.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jersey-media-json-jackson-3.1.7.jar">-->
+<!--           <Aliases>jersey-media-json-jackson-3.1.7</Aliases>-->
+<!--           <AssemblyVersion>3.1.7</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.7</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jersey-common-3.1.7.jar;..\apache-opennlp\libs\jersey-entity-filtering-3.1.7.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jersey-server-3.1.7.jar">-->
+<!--           <Aliases>jersey-server-3.1.7</Aliases>-->
+<!--           <AssemblyVersion>3.1.7</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>3.1.7</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jersey-client-3.1.7.jar;..\apache-opennlp\libs\jersey-common-3.1.7.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\jvmdowngrader-api.jar">-->
+<!--           <Aliases>jvmdowngrader-api</Aliases>-->
+<!--           <AssemblyVersion>1.0.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>1.0.0</AssemblyFileVersion>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\log4j-api-2.23.1.jar">-->
+<!--           <Aliases>log4j-api-2.23.1</Aliases>-->
+<!--           <AssemblyVersion>2.23.1</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.23.1</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\log4j-core-2.23.1.jar">-->
+<!--           <Aliases>log4j-core-2.23.1</Aliases>-->
+<!--           <AssemblyVersion>2.23.1</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.23.1</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\log4j-slf4j2-impl-2.23.1.jar">-->
+<!--           <Aliases>log4j-slf4j2-impl-2.23.1</Aliases>-->
+<!--           <AssemblyVersion>2.23.1</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.23.1</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\morfologik-fsa-2.1.9.jar">-->
+<!--           <Aliases>morfologik-fsa-2.1.9</Aliases>-->
+<!--           <AssemblyVersion>2.1.9</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.1.9</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\morfologik-fsa-builders-2.1.9.jar">-->
+<!--           <Aliases>morfologik-fsa-builders-2.1.9</Aliases>-->
+<!--           <AssemblyVersion>2.1.9</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.1.9</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\hppc-0.7.2.jar;..\apache-opennlp\libs\morfologik-fsa-2.1.9.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\morfologik-stemming-2.1.9.jar">-->
+<!--           <Aliases>morfologik-stemming-2.1.9</Aliases>-->
+<!--           <AssemblyVersion>2.1.9</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.1.9</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\morfologik-fsa-2.1.9.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\morfologik-tools-2.1.9.jar">-->
+<!--           <Aliases>morfologik-tools-2.1.9</Aliases>-->
+<!--           <AssemblyVersion>2.1.9</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.1.9</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jcommander-1.78.jar;..\apache-opennlp\libs\morfologik-fsa-2.1.9.jar;..\apache-opennlp\libs\morfologik-fsa-builders-2.1.9.jar;..\apache-opennlp\libs\morfologik-stemming-2.1.9.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\opennlp-brat-annotator-2.4.0.jar">-->
+<!--           <Aliases>opennlp-brat-annotator-2.4.0</Aliases>-->
+<!--           <AssemblyVersion>2.4.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.4.0</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jersey-container-grizzly2-http-3.1.7.jar;..\apache-opennlp\libs\jersey-server-3.1.7.jar;..\apache-opennlp\libs\opennlp-tools-2.4.0.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\opennlp-morfologik-addon-2.4.0.jar">-->
+<!--           <Aliases>opennlp-morfologik-addon-2.4.0</Aliases>-->
+<!--           <AssemblyVersion>2.4.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.4.0</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\morfologik-stemming-2.1.9.jar;..\apache-opennlp\libs\morfologik-tools-2.1.9.jar;..\apache-opennlp\libs\opennlp-tools-2.4.0.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\opennlp-tools-2.4.0.jar">-->
+<!--           <Aliases>opennlp-tools-2.4.0</Aliases>-->
+<!--           <AssemblyVersion>2.4.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.4.0</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\opennlp-uima-2.4.0.jar">-->
+<!--           <Aliases>opennlp-uima-2.4.0</Aliases>-->
+<!--           <AssemblyVersion>2.4.0</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.4.0</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\opennlp-tools-2.4.0.jar;..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\osgi-resource-locator-1.0.3.jar">-->
+<!--           <Aliases>osgi-resource-locator-1.0.3</Aliases>-->
+<!--           <AssemblyVersion>1.0.3</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>1.0.3</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--       <IkvmReference Include="..\apache-opennlp\libs\slf4j-api-2.0.13.jar">-->
+<!--           <Aliases>slf4j-api-2.0.13</Aliases>-->
+<!--           <AssemblyVersion>2.0.13</AssemblyVersion>-->
+<!--           <AssemblyFileVersion>2.0.13</AssemblyFileVersion>-->
+<!--           <References>..\apache-opennlp\libs\jvmdowngrader-api.jar</References>-->
+<!--       </IkvmReference>-->
+<!--   </ItemGroup>-->
 
 </Project>
