@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP2.NET", "OpenNLP2.NET\OpenNLP2.NET.csproj", "{70BAC0E6-A5CD-4455-864F-C1AFA9035309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP2.Build", "OpenNLP2.Build\OpenNLP2.Build.csproj", "{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{68DE75E7-A646-4C39-8964-7D6F7030EE54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70BAC0E6-A5CD-4455-864F-C1AFA9035309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BAC0E6-A5CD-4455-864F-C1AFA9035309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BAC0E6-A5CD-4455-864F-C1AFA9035309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BAC0E6-A5CD-4455-864F-C1AFA9035309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
