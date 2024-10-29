@@ -1,13 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO.Compression;
-using System.Text;
 using System.Text.RegularExpressions;
 using DotLang.CodeAnalysis.Syntax;
 using OpenNLP2.Build;
 
-Console.WriteLine("Download JvmDowngrader...");
+const int JAVA8_CLS_VER = 52;
+
 await FileDownloadHelper.DownloadFileAsync(
     "https://github.com/unimined/JvmDowngrader/releases/download/1.2.0/jvmdowngrader-1.2.0-all.jar",
     "jvmdowngrader.jar");
@@ -32,22 +30,8 @@ if (!Directory.Exists("apache-opennlp"))
     }
 }
 
-var libOutPath = Path.Combine("apache-opennlp", "libsJvm8");
-if (Directory.Exists(libOutPath))
-    Directory.Delete(libOutPath, true);
-
-//Covert to Java 8
-ExecuteCommand($"java -jar jvmdowngrader.jar -c 52 downgrade -t {inputPath} {libOutPath}");
-
-var apiPath = Path.Combine(libOutPath, "jvmdowngrader-api.jar");
-if (File.Exists(apiPath))
-    File.Delete(apiPath);
-
-//Extract the JVM Downgrader API
-ExecuteCommand($"java -jar jvmdowngrader.jar -c 52 debug downgradeApi {apiPath}");
-
 //Run jdeps => dependency graph
-string[] files = Directory.GetFiles(libOutPath, "*.jar");
+string[] files = Directory.GetFiles(inputPath, "*.jar");
 var cmd = $"jdeps --multi-release 9 -filter:package -dotoutput dot {string.Join(" ", files)}";
 ExecuteCommand(cmd);
 
@@ -69,7 +53,6 @@ var depsLookup = parser.Parse().Graphs[0].Statements
         group => group.Select(pair => pair.Item2).ToList()
     );
 
-Dictionary<string, IKVMTask> cache = new Dictionary<string, IKVMTask>();
 
 var pattern = new Regex("-(?<version>[0-9.]*).jar$", RegexOptions.Compiled);
 string? GetVersion(string str)
@@ -78,116 +61,102 @@ string? GetVersion(string str)
     return match.Success ? match.Groups["version"].Value : null;
 }
 
+Dictionary<string, IKVMTask> cache = new Dictionary<string, IKVMTask>();
 IKVMTask GetTask(string jarFile)
 {
-    if (cache.TryGetValue(jarFile, out IKVMTask task))
+    if (cache.TryGetValue(jarFile, out IKVMTask? task))
         return task;
     
     var deps = depsLookup.TryGetValue(jarFile, out var dependencies) 
         ? dependencies.Select(GetTask).ToList() 
         : new List<IKVMTask>();
     
-    if (!jarFile.Contains("jvmdowngrader-api"))
-        deps.Add(GetTask("jvmdowngrader-api.jar"));
-    
     var ver = GetVersion(jarFile) ?? "1.0.0"; //TODO: release.AssemblyVersion
     
-    task = new IKVMTask(jarFile, ver, deps);
+    task = new IKVMTask(jarFile, ver,  deps);
     cache[jarFile] = task;
     return task;
 } 
 
+var libOutPath = Path.Combine("apache-opennlp", "libsJvm8");
+if (Directory.Exists(libOutPath))
+    Directory.Delete(libOutPath, true);
+
 //Get the tasks
 var tasks = jars.Select(GetTask).ToList();
+foreach (var task in tasks)
+{
+    var sourceJar = Path.Combine(inputPath, task.JarFile);
+    var targetJar = Path.Combine(libOutPath, task.JarFile);
+    ushort? clsVersion = JarClassVersionReader.GetClassVersion(sourceJar);
+
+    if (clsVersion is > JAVA8_CLS_VER) //Größer als Java 8
+    {
+        string cpArgs = string.Empty;
+        if (task.Dependencies.Any())
+        {
+            string deps = string.Join(";", task.GetAllDependencies()
+                .Where(t => t.JarFile != "jvmdowngrader-api.jar")
+                .Select(t => Path.Combine(inputPath, t.JarFile)).Distinct());
+            cpArgs = $"-cp {deps}";
+        }
+        
+        task.Dependencies.Add(GetTask("jvmdowngrader-api.jar"));
+        
+        //Covert to Java 8
+        ExecuteCommand($"java -jar jvmdowngrader.jar -c {JAVA8_CLS_VER} downgrade -t {sourceJar} {targetJar} {cpArgs}");
+    }
+    else
+    {
+        File.Copy(sourceJar, targetJar, true);
+    }
+}
+
+var apiPath = Path.Combine(libOutPath, "jvmdowngrader-api.jar");
+if (File.Exists(apiPath))
+    File.Delete(apiPath);
+
+//Extract the JVM Downgrader API
+ExecuteCommand($"java -jar jvmdowngrader.jar -c 52 debug downgradeApi {apiPath}");
 
 var libDir = "..\\apache-opennlp\\libs\\";
 
 //Copy libs to Solution Folder 
 string libDirSolution = Path.Combine("..\\..\\.." , libDir);
-if (!Directory.Exists(libDirSolution))
-    Directory.CreateDirectory(libDirSolution);
+if (Directory.Exists(libDirSolution))
+    Directory.Delete(libDirSolution, true);
+Directory.CreateDirectory(libDirSolution);
 
 foreach (var file in Directory.GetFiles(libOutPath))
 {
-    File.Copy(file, Path.Combine(libDirSolution, Path.GetFileName(file)));
-}
+    var dest = Path.Combine(libDirSolution, Path.GetFileName(file));
+    File.Copy(file, dest, overwrite: true);
 
+    //Ensure that all class version is 52 (Java 8)
+    ushort? clsVersion = JarClassVersionReader.GetClassVersion(dest);
+    Console.WriteLine(Path.GetFileName(dest) + " -> Class Version: " + clsVersion);
+    
+    
+    //Workaround => Delete all module-info.class entries
+    using ZipArchive archive = ZipFile.Open(dest, ZipArchiveMode.Update);
+    var entries = archive.Entries.Where(e => e.Name.Equals("module-info.class")).ToArray();
+    foreach (var zipArchiveEntry in entries)
+    {
+        zipArchiveEntry.Delete();
+    }
+}
 
 //Output the targets
-foreach (var ikvmTask in tasks)
+foreach (var ikvmTask in cache.Values)
 {
     Console.WriteLine(ikvmTask.GetTarget(libDir));
-    //Compile(ikvmTask);
-}
-
-void Compile(IKVMTask task)
-{
-    string cmd = $"./ikvm/ikvmc {GetIKVMCommandLineArgs(task, "apache-opennlp\\libs\\")}";
-    Console.WriteLine(cmd);
-    var code = ExecuteCommand(cmd);
-    Console.WriteLine($"Done {task.DllFile} ({code})");
-}
-
-string GetIKVMCommandLineArgs(IKVMTask task, string jarLibDir)
-{
-    var dependencies = task.Dependencies
-        .SelectMany(x => 
-        {
-            Compile(x);
-            return x.DllReferences();
-        })
-        .Distinct();
-    
-    
-    var sb = new StringBuilder();
-    sb.AppendFormat(" -out:{0}", task.DllFile);
-
-    if (!string.IsNullOrEmpty(task.Version))
-    {
-        sb.AppendFormat(" -version:{0}", task.Version);
-    }
-
-    sb.Append(" -r:IKVM.Runtime.dll");
-
-    if (dependencies.Any())
-    {
-        sb.Append(" "+ string.Join(" ", dependencies.Select(dep => $"-r:\"{dep}\"")));
-    }
-    
-    sb.Append(" -nostdlib");
-    
-    sb.Append(" " + Path.Combine(jarLibDir, task.JarFile));
-    
-    return sb.ToString();
 }
 
 int ExecuteCommand(string command)
 {
+    command = command.Trim();
     var space = command.IndexOf(' ');
     var process = Process.Start(command[..space], command[(space + 1)..]);
     process.WaitForExit();
     return process.ExitCode;
-}
-
-record IKVMTask(string JarFile, string Version, List<IKVMTask> Dependencies)
-{
-    public string DllFile => Path.ChangeExtension(Path.GetFileName(JarFile), ".dll");
-    
-    public IEnumerable<string> DllReferences() => Dependencies.Select(dep => dep.DllFile);
-
-    public string GetTarget(string directory)
-    {
-        var depsJars = Dependencies
-            .Select(dep => Path.Combine(directory, dep.JarFile)).ToArray();
-        var refs = string.Join(";", depsJars);
-        var refTarget = depsJars.Any() ? $"\n     <References>{refs}</References>" : string.Empty;
-        
-        return $"""
-               <IkvmReference Include="{Path.Combine(directory, JarFile)}">
-                    <Aliases>{Path.GetFileNameWithoutExtension(JarFile)}</Aliases>
-                    <AssemblyVersion>{Version}</AssemblyVersion>
-                    <AssemblyFileVersion>{Version}</AssemblyFileVersion>{refTarget}
-               </IkvmReference>
-               """;
-    }
 }

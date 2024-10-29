@@ -5,6 +5,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP2.Build", "OpenNLP2.Build\OpenNLP2.Build.csproj", "{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{68DE75E7-A646-4C39-8964-7D6F7030EE54}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP2.Tests", "OpenNLP2.Tests\OpenNLP2.Tests.csproj", "{FC326739-BFAF-4501-B182-D91535E1B306}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP2.Common", "OpenNLP2.Common\OpenNLP2.Common.csproj", "{6E328F31-180F-4802-BCA0-C16B7341302C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,5 +27,13 @@ Global
 		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66DCBDCA-EFEF-4F5D-9AD0-21CF6EA677EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC326739-BFAF-4501-B182-D91535E1B306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC326739-BFAF-4501-B182-D91535E1B306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC326739-BFAF-4501-B182-D91535E1B306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC326739-BFAF-4501-B182-D91535E1B306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E328F31-180F-4802-BCA0-C16B7341302C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E328F31-180F-4802-BCA0-C16B7341302C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E328F31-180F-4802-BCA0-C16B7341302C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E328F31-180F-4802-BCA0-C16B7341302C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
