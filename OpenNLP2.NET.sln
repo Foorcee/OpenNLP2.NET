@@ -7,6 +7,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{68DE75E7-A646-4C39-8964-7D6F7030EE54}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP2.Tests", "OpenNLP2.Tests\OpenNLP2.Tests.csproj", "{FC326739-BFAF-4501-B182-D91535E1B306}"
